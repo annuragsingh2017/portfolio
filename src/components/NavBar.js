@@ -5,7 +5,6 @@ import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from '../assets/img/nav-icon4.svg';
 import { HashLink } from 'react-router-hash-link';
-import jsPDF from 'jspdf';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
@@ -33,16 +32,16 @@ export const NavBar = () => {
     setActiveLink(value);
   }
   const handleDownloadPDF = () => {
-    const pdfUrl = '..\assets\pdf\resume.pdf';
+    const pdfUrl = process.env.PUBLIC_URL + '/pdf/Resume.pdf';
     const anchor = document.createElement('a');
     anchor.href = pdfUrl;
     anchor.download = 'resume.pdf';
-    
+  
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
   };
-
+    
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
